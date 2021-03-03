@@ -35,7 +35,7 @@
 .form {
   position: relative;
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .form input {
@@ -60,6 +60,18 @@ input:focus {
   border: none;
   top: 25px;
   left: 670px;
+}
+
+.clear-btn {
+  position: absolute;
+  top: 75px;
+  left: 130px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 5px 200px;
+  background-color: #ffffff;
+  border: 1px solid #8395a7;
+  border-radius: 5px;
 }
 
 .profile {
