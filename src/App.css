@@ -10,17 +10,42 @@
   background-color: #c8d6e5;
   font-family: 'Ubuntu', sans-serif;
   color: #ffffff;
+  margin: auto;
   min-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .nav-bar {
-  display: flex;
-  background-color: #222f3e;
-  padding: 10px 15px;
+  position: relative;
+  background-color: #272f38;
+  display: inline-block;
+  padding: 5px 30px;
+  width: 100%;
 }
 
 .nav-bar h2 {
-  margin: 15px 10px;
+  position: absolute;
+  display: inline;
+  margin: 17px 7px;
+}
+
+.link {
+  display: flex;
+  float: right;
+  padding: 20px;
+  font-size: 18px;
+  color: #ffffff;
+  list-style-type: none;
+}
+
+.link li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.link li a:hover {
+  color: #c8d6e5;
 }
 
 .container {
@@ -118,3 +143,109 @@ button:focus {
 button:active {
   transform: scale(0.99);
 }
+
+.user-profile {
+  color: #000000;
+  position: relative;
+}
+
+.user-profile > strong {
+  position: absolute;
+  top: 23px;
+  right: 300px;
+  display: flex;
+}
+
+.back-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 620px;
+  font-size: 16px;
+  padding : 7px 15px;
+  background-color: transparent;
+  border: 1px solid #8395a7;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+}
+
+.user-info {
+  position: absolute;
+  top: 80px;
+  right: 300px;
+  padding: 30px 35px;
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #686868;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+}
+
+.user-info img {
+  width: 250px;
+  border-radius: 50%;
+  border: 1px solid #687786;
+  box-shadow: 0 0 4px 1px #8395a7;
+  margin-bottom: 15px;
+}
+
+.user-info h2 {
+  margin-bottom: 10px;
+}
+
+.off-info button {
+  cursor: pointer;
+  padding: 10px;
+  width: 150px;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #8395a7;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+}
+
+.off-info ul {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+.off-info a {
+  color: #59626b;
+}
+
+.off-info a:hover {
+  color: #000000;
+}
+
+.block {
+  position: absolute;
+  right: -550px;
+  display: flex;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+  padding: 15px;
+  width: 700px;
+}
+
+.followers {
+  flex: 0.5;
+  color: #215e29;
+}
+
+.followings {
+  flex: 0.5;
+  color: #0077ff;
+}
+
+.repo {
+  flex: 0.5;
+  color: #8c00ff;
+}
+

@@ -1,16 +1,20 @@
 import './App.css';
 import axios from 'axios'
-import React, { Component } from 'react'
-import { NavBar } from './Components/Layout/NavBar';
-import { Users } from './Components/Users/Users';
-import { Search } from './Components/Users/Search';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { Component, Fragment } from 'react'
+import { NavBar } from './Components/Layout/NavBar'
+import { Users } from './Components/Users/Users'
+import { UserProfile } from './Components/Users/UserProfile'
+import { Search } from './Components/Users/Search'
 import { Alert } from './Components/Layout/Alert'
+import { About } from './Components/Pages/About'
 
 class App extends Component {
 
   state = {
     loading: false,
     users: [],
+    profileData: {},
     alert: null
   }
   
@@ -19,6 +23,12 @@ class App extends Component {
     this.setState({ loading: true })
     const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRETS}`)
     this.setState({users: res.data.items, loading: false})
+  }
+
+  getUserProfile = async (username) => {
+    this.setState({ loading: true })
+    const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRETS}`)
+    this.setState({profileData: res.data, loading: false})
   }
 
   // Function to show alert message and remove message after 5 seconds if input text field is empty
@@ -42,23 +52,37 @@ class App extends Component {
   }
 
   render() {
-    const { loading, users, alert } = this.state
+    const { loading, users, profileData, alert } = this.state
     return (
-    <div className="App">
-      <NavBar title = 'Github Finder'/>
-      <div className = 'container'>
-        <Alert alert = {alert} 
-               onDelete = {this.deleteAlert}
-              />
-        <Search btnText = 'Clear'
-                onSearch = {this.searchUsers}
-                showAlert = {this.showAlert} 
-                onClickClear = {this.clearUsers}
-                showClear = {users.length > 0 ? true : false}
-              />
-        <Users loading = {loading} usersData = {users}/>
-      </div> 
-    </div>
+      <Router>
+        <div className="App">
+          <NavBar title = 'Github Finder'/>
+          <div className = 'container'>
+            <Alert alert = {alert} 
+                   onDelete = {this.deleteAlert}
+            />
+            <Switch>
+              <Route exact path = '/' render = { props => (
+                <Fragment>
+                  <Search btnText = 'Clear'
+                    onSearch = {this.searchUsers}
+                    showAlert = {this.showAlert} 
+                    onClickClear = {this.clearUsers}
+                    showClear = {users.length > 0 ? true : false}
+                  />
+                  <Users loading = {loading} usersData = {users}/>
+                </Fragment>
+              )}>
+              </Route>
+              <Route exact path = '/About' component = {About}></Route>
+              <Route exact path = '/users/:login' render = { props => (
+                <UserProfile {...props} userProfile = {this.getUserProfile} profile = {profileData} loading = {loading}/>
+              )}>
+              </Route>              
+            </Switch>  
+         </div> 
+       </div>
+      </Router>
     )
   }
 }
