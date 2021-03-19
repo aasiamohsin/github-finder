@@ -7,19 +7,16 @@
 }
 
 .App {
-  background-color: #c8d6e5;
+  background-color: #ffffff;
   font-family: 'Ubuntu', sans-serif;
-  color: #ffffff;
-  margin: auto;
   min-height: 100vh;
-  max-width: 100%;
   overflow: hidden;
 }
 
 .nav-bar {
   position: relative;
   background-color: #272f38;
-  display: inline-block;
+  color: #ffffff;
   padding: 5px 30px;
   width: 100%;
 }
@@ -35,7 +32,6 @@
   float: right;
   padding: 20px;
   font-size: 18px;
-  color: #ffffff;
   list-style-type: none;
 }
 
@@ -43,144 +39,135 @@
   text-decoration: none;
   color: #ffffff;
 }
-
 .link li a:hover {
   color: #c8d6e5;
 }
 
 .container {
+  max-width: 1100px;
+  margin: 50px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #c8d6e5;
-  padding: 50px;
 }
 
 .form {
-  position: relative;
-  display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
-.form input {
-  width: 700px;
-  margin: 10px;
-  padding: 15px 15px;
+.form input,
+.search-btn {
+  border: 1px solid #272f38;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   font-size: 16px;
-  border: 1px solid #8395a7;
-  border-radius: 5px;
-  box-shadow: 0 0 3px 1px #8395a7;
+  padding: 15px 15px;
 }
 
-input:focus {
-  outline: none;
+input[type='text'] {
+  width: 650px;
 }
 
 .search-btn {
-  position: absolute;
   cursor: pointer;
-  background-color: transparent;
-  font-size: 18px;
-  border: none;
-  top: 25px;
-  left: 670px;
+  background-color: #222f3e;
+  color: #ffffff;
+  border-left: 0;
+  border-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .clear-btn {
-  position: absolute;
-  top: 75px;
-  left: 130px;
   cursor: pointer;
-  font-size: 18px;
-  padding: 5px 200px;
-  background-color: #ffffff;
+  width: 500px;
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 20px 100px;
+  color: #ffffff;
+  background-color: #222f3e;
   border: 1px solid #8395a7;
   border-radius: 5px;
 }
 
 .profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 350px;
-  width: 300px;
-  margin-top: 25px;
-  padding: 20px 50px;
-  color: #000000;
+  position: relative;
+  height: 120px;
+  width: 1000px;
+  margin-top: 15px;
+  padding: 10px 50px;
   border-radius: 7px;
-  border: 1px solid #8395a7;
-  box-shadow: 0 0 7px 1px #8395a7;
-}
-
-.profile img {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  color: #ffffff;
+  background-image: linear-gradient(90deg, #8395a7, #272f38);
+  border: 1px solid #686868;
   box-shadow: 0 0 5px 1px #8395a7;
 }
 
+.profile img {
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 1px #8395a7;
+}
+
 .profile h3 {
-  text-align: center;
-  margin: 17px;
+  display: inline;
+  position: absolute;
+  margin: 35px 17px;
+  font-size: 20px;
 }
 
 .profile button {
   cursor: pointer;
-  background-color: #222f3e;
-  color: #ffffff;
-  border: 1px solid #8395a7;
+  display: flex;
+  float: right;
+  background-color: #8395a7;
+  color: #000000;
+  border: 1px solid #222f3e;
   border-radius: 7px;
   padding: 10px 25px;
-  font-size: 16px;
-}
-
-button:focus {
-  outline: none;
-}
-
-button:active {
-  transform: scale(0.99);
+  margin: 30px 0;
+  font-size: 18px;
 }
 
 .user-profile {
-  color: #000000;
   position: relative;
+  max-width: 1200px;
+  border: 1px dotted #8395a7;
+  padding: 50px 25px;
+  color: #000000;
 }
 
 .user-profile > strong {
-  position: absolute;
-  top: 23px;
-  right: 300px;
   display: flex;
+  margin: -10px 300px;
 }
 
 .back-btn {
-  cursor: pointer;
   position: absolute;
-  top: 15px;
-  right: 620px;
+  top: 30px;
+  left: 65px;
+  cursor: pointer;
   font-size: 16px;
-  padding : 7px 15px;
-  background-color: transparent;
-  border: 1px solid #8395a7;
+  padding: 7px 15px;
+  color: #000000;
+  background-color: #8395a7;
+  border: 1px solid #222f3e;
   border-radius: 5px;
-  box-shadow: 0 0 3px 1px #8395a7;
+  box-shadow: 0 0 2px 1px #8395a7;
 }
 
 .user-info {
-  position: absolute;
-  top: 80px;
-  right: 300px;
-  padding: 30px 35px;
-  width: 400px;
-  height: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  float: left;
+  padding: 30px 35px;
+  margin: 25px 20px;
+  width: 400px;
+  height: 550px;
   border: 1px solid #686868;
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #8395a7;
@@ -194,18 +181,15 @@ button:active {
   margin-bottom: 15px;
 }
 
-.user-info h2 {
-  margin-bottom: 10px;
-}
-
 .off-info button {
   cursor: pointer;
   padding: 10px;
   width: 150px;
   margin-top: 10px;
   font-size: 16px;
-  background-color: transparent;
-  border: 1px solid #8395a7;
+  color: #000000;
+  background-color: #8395a7;
+  border: 1px solid #222f3e;
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #8395a7;
 }
@@ -213,6 +197,10 @@ button:active {
 .off-info ul {
   list-style-type: none;
   margin-top: 10px;
+}
+
+.off-info a:visited {
+  color: #642a7a;
 }
 
 .off-info a {
@@ -223,15 +211,18 @@ button:active {
   color: #000000;
 }
 
+.off-info a:active {
+  color: #015cc4;
+}
+
 .block {
-  position: absolute;
-  right: -550px;
   display: flex;
   border: 1px solid #000000;
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #8395a7;
   padding: 15px;
-  width: 700px;
+  margin-left: 90px;
+  width: 900px;
 }
 
 .followers {
@@ -249,3 +240,89 @@ button:active {
   color: #8c00ff;
 }
 
+.repos {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  float: right;
+  padding: 30px 20px;
+  margin-bottom: 40px;
+  width: 600px;
+  height: 50px;
+  font-size: 20px;
+  background-image: linear-gradient(90deg, #8395a7, #272f38);
+  border: 1px solid #686868;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+}
+
+.repos a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.repos a:hover {
+  color: #dce2e9;
+}
+
+input,
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 700px) {
+  .form input[type='text'] {
+    width: 450px;
+    margin-left: 103px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .profile {
+    width: 800px;
+  }
+}
+
+@media (max-width: 700px) {
+  .profile {
+    width: 500px;
+    padding: 10px 10px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+  }
+
+  .user-info {
+    width: 350px;
+  }
+
+  .back-btn {
+    margin-left: 80px;
+  }
+
+  .user-profile > strong {
+    margin-right: 90px;
+  }
+
+  .repos {
+    width: 400px;
+    margin-right: 70px;
+  }
+
+  .block {
+    width: 500px;
+    margin-right: 90px;
+    font-size: 14px;
+  }
+}

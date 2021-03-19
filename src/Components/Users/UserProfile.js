@@ -1,28 +1,24 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Spinner } from '../Layout/Spinner'
 import { Link } from 'react-router-dom'
+import { Repos } from '../Repos/Repos'
 
-export class UserProfile extends Component {
+export const UserProfile = ({userProfile, userRepos, profile, reposData, loading, match}) => {
 
-    static propTypes = {
-        userProfile: PropTypes.func.isRequired,
-        profile: PropTypes.object.isRequired,
-        loading: PropTypes.bool.isRequired,
-    }
+    useEffect(() => {
+        userProfile(match.params.login)
+        userRepos(match.params.login)
+        // eslint-disable-next-line
+    }, [])
+   
+    const { name, company, avatar_url, location, bio, blog, login, html_url, followers, following, public_repos, public_gists, hireable } = profile
 
-    componentDidMount() {
-        this.props.userProfile(this.props.match.params.login)
-    }
+    if (loading) return <Spinner/>
 
-    render() {
-        const { name, company, avatar_url, location, bio, blog, login, html_url, followers, following, public_repos, public_gists, repos_url, hireable } = this.props.profile
-        const { loading } = this.props
-
-        if (loading) return <Spinner/>
-        return (
-            <div className = 'user-profile'>
-                <Link to = '/'><button className = 'back-btn' >Back</button></Link>
+    return(
+        <div className = 'user-profile'>
+            <Link to = '/'><button className = 'back-btn' >Back</button></Link>
                 <strong>
                 Hireable: {hireable ? <i className="fas fa-check" style = {{color: 'green', marginLeft: '7px'}}></i> : <i className="fas fa-times-circle" style = {{color: 'crimson', marginLeft: '7px'}}></i>}
                 </strong>
@@ -49,7 +45,7 @@ export class UserProfile extends Component {
                         )}          
                     </div>
                     <div className = 'off-info'>
-                        <a href = {html_url}><button>GitHub Profile</button></a>
+                        <a href = {html_url} target = '_blank' rel ='noreferrer'><button>GitHub Profile</button></a>
                         <ul>
                             <li>
                                 { company && (
@@ -61,13 +57,16 @@ export class UserProfile extends Component {
                             <li>
                                 { blog && (
                                     <Fragment>
-                                        <a href = {blog} style = {{textDecoration: 'none'}}>{blog}</a>
+                                        <a href = {blog} target = '_blank' rel ='noreferrer' style = {{textDecoration: 'none'}}>{blog}</a>
                                     </Fragment>
                                 )}
                             </li>
                         </ul>
                     </div>
                 </div>
+                
+                <Repos repos = {reposData}/>
+
                 <div className = 'block'>
                     <div className='followers'>
                         Followers: {followers}
@@ -82,8 +81,15 @@ export class UserProfile extends Component {
                         Public Gists: {public_gists}
                     </div>
                 </div>
-            </div>
-        )
-       
-    }
+        </div>
+        
+    )
+}
+    
+UserProfile.propTypes = {
+    userProfile: PropTypes.func.isRequired,
+    userRepos: PropTypes.func.isRequired,
+    profile: PropTypes.object.isRequired,
+    reposData: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired,
 }

@@ -14,18 +14,21 @@ export const Users = (props) => {
         else
 
         return (
-            <div style = {profileStyling} >
+            <div >
                {users.map((profile) => <Profile  key = {profile.id} user = {profile} buttonText = 'Profile' />)}
             </div>            
         )
     
 }
 
+/*
+style = {profileStyling}
 const profileStyling = {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: '15px'
 }
+*/
 
 Users.propTypes = {
     usersData: PropTypes.array.isRequired,
