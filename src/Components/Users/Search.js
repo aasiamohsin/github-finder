@@ -1,10 +1,13 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
+import { GithubContext } from '../../Context/Github/GithubContext'
+import { AlertContext } from '../../Context/Alert/AlertContext'
 
-export const Search = ({btnText, onSearch, onClickClear, showClear, showAlert}) => {
+export const Search = ({btnText}) => {
 
     const [ text, setText ] = useState('')
+    const githubContext = useContext(GithubContext)
+    const alertContext = useContext(AlertContext)
 
     const onChange = e => setText(e.target.value)
 
@@ -12,13 +15,14 @@ export const Search = ({btnText, onSearch, onClickClear, showClear, showAlert}) 
         e.preventDefault()
 
         if(!text){
-            showAlert('Please enter username')
+            alertContext.showAlert('Please enter username')
         }
         else {
-            onSearch(text)
+            githubContext.searchUsers(text)
             setText('')
         }
     }
+
         return (
             <div className = 'form'>
                 <form onSubmit = {onSubmit}>
@@ -29,8 +33,8 @@ export const Search = ({btnText, onSearch, onClickClear, showClear, showAlert}) 
                     <button className = 'search-btn' type = 'submit'><i className="fas fa-search"></i></button>
                 </form>
                 {
-                 showClear &&
-                <button className= 'clear-btn' onClick = {onClickClear}>{btnText}</button>
+                 githubContext.users.length > 0 &&
+                <button className= 'clear-btn' onClick = {githubContext.clearUsers}>{btnText}</button>
                 }
             </div>
         )
@@ -38,8 +42,4 @@ export const Search = ({btnText, onSearch, onClickClear, showClear, showAlert}) 
 
 Search.propTypes = {
     btnText: PropTypes.string.isRequired,
-    onSearch: PropTypes.func.isRequired,
-    onClickClear: PropTypes.func.isRequired,
-    showClear: PropTypes.bool.isRequired,
-    showAlert: PropTypes.func.isRequired,
 }

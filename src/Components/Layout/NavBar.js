@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 
 export const NavBar = ({title, icon}) => {
     return (
-        <nav className = 'nav-bar'>
+        <nav className = 'nav-bar flex'>
             <i className= {icon} ></i>
             <h2>{title}</h2>
             <ul className = 'link'>
                 <li>
-                    <Link style ={ {padding: '20px'} } to = '/'>Home</Link>
+                    <Link to = '/'>Home</Link>
                 </li>
                 <li>
                     <Link to = '/about'>About</Link>
@@ -21,7 +21,7 @@ export const NavBar = ({title, icon}) => {
 
 NavBar.defaultProps = {
     title: 'Github Finder',
-    icon: 'fab fa-github fa-4x'
+    icon: 'fab fa-github fa-3x'
 }
 
 NavBar.propTypes = {

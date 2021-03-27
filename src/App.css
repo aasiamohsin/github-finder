@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,44 +8,48 @@
 
 .App {
   background-color: #ffffff;
-  font-family: 'Ubuntu', sans-serif;
-  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
   overflow: hidden;
 }
 
 .nav-bar {
-  position: relative;
+  position: fixed;
   background-color: #272f38;
   color: #ffffff;
-  padding: 5px 30px;
+  padding: 7px 30px;
+  box-shadow: 0 0 5px 1px #5a6774;
   width: 100%;
+  height: 60px;
+  z-index: 1;
 }
 
 .nav-bar h2 {
   position: absolute;
   display: inline;
-  margin: 17px 7px;
+  top: 16px;
+  left: 80px;
 }
 
 .link {
   display: flex;
   float: right;
-  padding: 20px;
+  padding: 12px;
   font-size: 18px;
   list-style-type: none;
 }
 
 .link li a {
   text-decoration: none;
+  margin: 10px;
   color: #ffffff;
 }
 .link li a:hover {
   color: #c8d6e5;
+  border-bottom: 2px solid #c8d6e5;
 }
 
 .container {
-  max-width: 1100px;
-  margin: 50px auto;
+  margin: 100px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,30 +57,31 @@
 }
 
 .form {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form input,
 .search-btn {
-  border: 1px solid #272f38;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  padding: 12px 10px;
+  margin: 0;
   font-size: 16px;
-  padding: 15px 15px;
-}
-
-input[type='text'] {
-  width: 650px;
+  border: 1px solid #272f38;
 }
 
 .search-btn {
   cursor: pointer;
   background-color: #222f3e;
   color: #ffffff;
-  border-left: 0;
-  border-radius: 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.form input[type='text'] {
+  width: 600px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .clear-btn {
@@ -93,19 +98,19 @@ input[type='text'] {
 
 .profile {
   position: relative;
-  height: 120px;
+  height: 100px;
   width: 1000px;
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 10px 50px;
   border-radius: 7px;
-  color: #ffffff;
+  color: #000000;
   background-image: linear-gradient(90deg, #8395a7, #272f38);
   border: 1px solid #686868;
   box-shadow: 0 0 5px 1px #8395a7;
 }
 
 .profile img {
-  height: 100px;
+  height: 80px;
   border-radius: 50%;
   box-shadow: 0 0 3px 1px #8395a7;
 }
@@ -113,29 +118,30 @@ input[type='text'] {
 .profile h3 {
   display: inline;
   position: absolute;
-  margin: 35px 17px;
-  font-size: 20px;
+  margin: 28px 7px;
+  font-size: 18px;
 }
 
 .profile button {
   cursor: pointer;
-  display: flex;
   float: right;
   background-color: #8395a7;
   color: #000000;
   border: 1px solid #222f3e;
   border-radius: 7px;
-  padding: 10px 25px;
-  margin: 30px 0;
-  font-size: 18px;
+  padding: 8px 25px;
+  margin: 24px 0;
+  font-size: 16px;
 }
 
 .user-profile {
   position: relative;
-  max-width: 1200px;
-  border: 1px dotted #8395a7;
+  max-width: 1100px;
   padding: 50px 25px;
   color: #000000;
+  border: 1px solid #f0f2f5;
+  box-shadow: 0 0 2px 1px #f4f5f7;
+  border-radius: 5px;
 }
 
 .user-profile > strong {
@@ -174,7 +180,7 @@ input[type='text'] {
 }
 
 .user-info img {
-  width: 250px;
+  width: 200px;
   border-radius: 50%;
   border: 1px solid #687786;
   box-shadow: 0 0 4px 1px #8395a7;
@@ -221,8 +227,8 @@ input[type='text'] {
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #8395a7;
   padding: 15px;
-  margin-left: 90px;
-  width: 900px;
+  margin-left: 20px;
+  width: 1025px;
 }
 
 .followers {
@@ -240,17 +246,27 @@ input[type='text'] {
   color: #8c00ff;
 }
 
-.repos {
+.repo-container {
+  width: 600px;
+  height: 550px;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
   float: right;
-  padding: 30px 20px;
-  margin-bottom: 40px;
-  width: 600px;
-  height: 50px;
-  font-size: 20px;
+  margin-top: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px 1px #8395a7;
+  border: 1px solid #686868;
+}
+
+.repos {
+  padding: 20px 20px;
+  margin: 15px 25px;
+  width: 550px;
+  height: 60px;
+  font-size: 18px;
+  font-weight: bold;
   background-image: linear-gradient(90deg, #8395a7, #272f38);
   border: 1px solid #686868;
   border-radius: 5px;
@@ -277,21 +293,41 @@ button:active {
 
 @media (max-width: 700px) {
   .form input[type='text'] {
-    width: 450px;
-    margin-left: 103px;
+    width: 400px;
+  }
+}
+
+@media (max-width: 700px) {
+  .clear-btn {
+    width: 400px;
   }
 }
 
 @media (max-width: 1000px) {
   .profile {
-    width: 800px;
+    width: 700px;
   }
 }
 
 @media (max-width: 700px) {
   .profile {
-    width: 500px;
+    width: 400px;
+    height: 80px;
     padding: 10px 10px;
+  }
+
+  .profile h3 {
+    margin: 20px 10px;
+  }
+
+  .profile img {
+    height: 60px;
+  }
+
+  .profile button {
+    margin: 13px 5px;
+    padding: 7px 10px;
+    font-size: 14px;
   }
 }
 
@@ -315,14 +351,18 @@ button:active {
     margin-right: 90px;
   }
 
-  .repos {
+  .repo-container {
+    margin-top: 0;
     width: 400px;
-    margin-right: 70px;
+  }
+
+  .repos {
+    width: 350px;
   }
 
   .block {
-    width: 500px;
-    margin-right: 90px;
-    font-size: 14px;
+    width: 400px;
+    margin: 20px 80px;
+    font-size: 12px;
   }
 }

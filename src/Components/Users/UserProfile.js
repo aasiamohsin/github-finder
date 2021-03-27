@@ -1,20 +1,21 @@
-import React, { Fragment, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment, useEffect, useContext } from 'react'
+import { GithubContext } from '../../Context/Github/GithubContext'
 import { Spinner } from '../Layout/Spinner'
 import { Link } from 'react-router-dom'
 import { Repos } from '../Repos/Repos'
 
-export const UserProfile = ({userProfile, userRepos, profile, reposData, loading, match}) => {
+export const UserProfile = ({match}) => {
 
+    const githubContext = useContext(GithubContext)
     useEffect(() => {
-        userProfile(match.params.login)
-        userRepos(match.params.login)
+        githubContext.getUserProfile(match.params.login)
+        githubContext.getUserRepos(match.params.login)
         // eslint-disable-next-line
     }, [])
    
-    const { name, company, avatar_url, location, bio, blog, login, html_url, followers, following, public_repos, public_gists, hireable } = profile
+    const { name, company, avatar_url, location, bio, blog, login, html_url, followers, following, public_repos, public_gists, hireable } = githubContext.profileData
 
-    if (loading) return <Spinner/>
+    if (githubContext.loading) return <Spinner/>
 
     return(
         <div className = 'user-profile'>
@@ -65,7 +66,7 @@ export const UserProfile = ({userProfile, userRepos, profile, reposData, loading
                     </div>
                 </div>
                 
-                <Repos repos = {reposData}/>
+                <Repos />
 
                 <div className = 'block'>
                     <div className='followers'>
@@ -84,12 +85,4 @@ export const UserProfile = ({userProfile, userRepos, profile, reposData, loading
         </div>
         
     )
-}
-    
-UserProfile.propTypes = {
-    userProfile: PropTypes.func.isRequired,
-    userRepos: PropTypes.func.isRequired,
-    profile: PropTypes.object.isRequired,
-    reposData: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired,
 }

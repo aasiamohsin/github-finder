@@ -1,0 +1,8 @@
+export const Search_Users = 'SEARCH_USERS'
+export const Get_User_Profile = 'GET_USER_Profile'
+export const Clear_Users = 'CLEAR_USERS'
+export const Get_Repos = 'GET_REPOS'
+export const Set_Loading = 'SET_LOADING'
+export const Set_Alert = 'SET_ALERT'
+export const Remove_Alert = 'REMOVE_ALERT'
+export const Delete_Alert = 'DELETE_ALERT'

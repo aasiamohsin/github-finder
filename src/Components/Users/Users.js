@@ -1,36 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {useContext} from 'react'
+import { GithubContext } from '../../Context/Github/GithubContext'
 import { Profile } from './Profile'
 import { Spinner } from '../Layout/Spinner'
 
-export const Users = (props) => {
+export const Users = () => {
 
-        const users = props.usersData
-        const spinner = props.loading
+    const githubContext = useContext(GithubContext)
 
-        if(spinner)
-        return <Spinner/>
+    if(githubContext.loading)
+    return <Spinner/>
 
-        else
+    else
 
-        return (
-            <div >
-               {users.map((profile) => <Profile  key = {profile.id} user = {profile} buttonText = 'Profile' />)}
-            </div>            
-        )
-    
-}
-
-/*
-style = {profileStyling}
-const profileStyling = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: '15px'
-}
-*/
-
-Users.propTypes = {
-    usersData: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired,
+    return (
+        <div>
+            {githubContext.users.map((profile) => <Profile  key = {profile.id} user = {profile} buttonText = 'Profile' />)}
+        </div>
+    )
 }

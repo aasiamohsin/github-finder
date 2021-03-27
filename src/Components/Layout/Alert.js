@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useContext } from 'react'
+import { AlertContext } from '../../Context/Alert/AlertContext'
 
-export const Alert = ({alert, onDelete}) => {
+export const Alert = () => {
+    const alertContext = useContext(AlertContext)
+    const { alert, deleteAlert } = alertContext;
+
     return (
-            alert !== null &&
+            alert !== null && 
             <div style = {styling}>
                 <i className="fas fa-exclamation" ></i> 
-                {alert.msg}
-                <i className="fas fa-times-circle" onClick = {onDelete} style = {{color: 'crimson', marginLeft: '350px', cursor: 'pointer'}}></i>
+                {alert}
+                <i className="fas fa-times-circle" onClick = {deleteAlert} style = {{color: 'crimson', marginLeft: '150px', cursor: 'pointer'}}></i>
             </div>
     )
 }
